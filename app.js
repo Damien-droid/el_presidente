@@ -3,6 +3,9 @@ var app = express();
 var http = require( "http" ).createServer( app );
 var io = require( "socket.io" )( http );
 var Twitter = require("twitter");
+var fs = require('fs');
+var config = require('config-json');
+config.load('./config.json');
 
 var client = new Twitter({
   consumer_key: 'iaK4Uw1gJjeOXY2254P6Fws7U',
@@ -45,6 +48,10 @@ client.stream('statuses/filter', {track: '@EmmanuelMacron'},  function(stream) {
 
 io.on('connection', function(){
   setInterval(function(){
-    io.emit('result',[fillon,macron,10]);
+    config.load('./config.json');
+    fs.readFile('./config.json', 'utf8', function (err,data) {
+      var config = JSON.parse(data);
+      io.emit('result',[fillon,macron, config.app.max_tweets]);
+    });
   },2000);
 });
