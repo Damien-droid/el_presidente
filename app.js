@@ -16,6 +16,7 @@ var client = new Twitter({
 
 var fillon = 0;
 var macron = 0;
+var valls = 0;
 
 http.listen(3001, "127.0.0.1");
 
@@ -46,12 +47,23 @@ client.stream('statuses/filter', {track: '@EmmanuelMacron'},  function(stream) {
   });
 });
 
+client.stream('statuses/filter', {track: '@manuelvalls'},  function(stream) {
+  stream.on('data', function(tweet) {
+    valls++;
+  });
+
+  stream.on('error', function(error) {
+    console.log(error);
+  });
+});
+
+
 io.on('connection', function(){
   setInterval(function(){
     config.load('./config.json');
     fs.readFile('./config.json', 'utf8', function (err,data) {
       var config = JSON.parse(data);
-      io.emit('result',[fillon,macron, config.app.max_tweets]);
+      io.emit('result',[fillon,macron,valls, config.app.max_tweets]);
     });
   },2000);
 });
