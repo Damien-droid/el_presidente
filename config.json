@@ -1,5 +1,5 @@
 {
   "app":{
-    "max_tweets" : 500
+    "scale" : 0.1
   }
 }

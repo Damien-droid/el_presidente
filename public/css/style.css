@@ -1,3 +1,76 @@
+body{
+  background-image: url('../images/background.jpeg');
+
+  background-size: cover;
+
+}
+.navbar{
+  margin-bottom: 5%;
+  background-color: transparent;
+  border: none;
+  color:white;
+}
 h1{
-  color:red;
+  color:white;
+}
+#logo{
+  width: 80px;
+  height:80px;
+  margin: 0px;
+  margin-top:5px;
+  padding:0px;
+  border-style: solid;
+  border-radius: 50%;
+}
+
+#myChart{
+  height:70vh;
+}
+
+
+#area{
+  height:70vh;
+  display: block;
+}
+
+.candidat img{
+  height:110px;
+  width:110px;
+  border-radius:50%;
+  position: absolute;
+}
+#valls{
+  top:0px;
+}
+#macron{
+  top : 120px;
+}
+#fillon{
+  top:240px;
+}
+
+
+#valls .rainbow {
+  position:absolute;
+  left:0px;
+  margin:-15px;
+  margin-top:5px;
+  padding: 0px;
+  width:45px;
+}
+#macron .rainbow {
+  position:absolute;
+  left:0px;
+  margin:-15px;
+  margin-top:5px;
+  padding: 0px;
+  width:45px;
+}
+#fillon .rainbow {
+  position:absolute;
+  left:0px;
+  margin:-15px;
+  margin-top:5px;
+  padding: 0px;
+  width:45px;
 }

@@ -63,7 +63,7 @@ io.on('connection', function(){
     config.load('./config.json');
     fs.readFile('./config.json', 'utf8', function (err,data) {
       var config = JSON.parse(data);
-      io.emit('result',[fillon,macron,valls, config.app.max_tweets]);
+      io.emit('result',[fillon,macron,valls, config.app.scale]);
     });
-  },2000);
+  },5000);
 });
