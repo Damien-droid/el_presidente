@@ -7,11 +7,14 @@ var fs = require('fs');
 var config = require('config-json');
 config.load('./config.json');
 
-var client = new Twitter({
-  consumer_key: 'iaK4Uw1gJjeOXY2254P6Fws7U',
-  consumer_secret: 'K5t0RcoRckiAnkK9EcDqsXtReNJO6zqeDRdGUGtPvkvT4QpZMp',
-  access_token_key: '1088992639-N4XjmxQhgONqmkaqhC2ubiYPHrbna1gIU8Oko33',
-  access_token_secret: '8gX6pD7aZQ8AyXD7z8yLpHc9VeTu4bGHQ9CCJN88zeLqF'
+fs.readFile('./api.json', 'utf8', function (err,data) {
+  var api = JSON.parse(data);
+  var client = new Twitter({
+    consumer_key: api.twitter.consumer_key,
+    consumer_secret: api.twitter.consumer_secret,
+    access_token_key: api.twitter.access_token_key,
+    access_token_secret: api.twitter.access_token_secret
+  });
 });
 
 var fillon = 0;
